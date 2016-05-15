@@ -1,4 +1,4 @@
-var request = require('request-promise')
+var request = require('request-promise');
 
 
 //STAND IN: grab moisture data from GPIO sesnor
