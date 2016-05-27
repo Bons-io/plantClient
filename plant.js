@@ -1,8 +1,19 @@
 var request = require('request-promise');
+var five = require('johnny-five');
+var Raspi = require("raspi-io");
+
+var board = new five.Board({
+  io: new Raspi()
+});
 
 
-//STAND IN: grab moisture data from GPIO sesnor
-	//code code code. See Blink.js example.
+//TODO: grab moisture data from GPIO sesnor
+
+//THOUGHTS
+	// use Johnny Five library's "Sensor" class
+	// declare a var, mostRecentReading
+	// update mostRecentReading from sensor on a "data" event
+	// periodically throw the reading from mostRecentReading out to the server via http
 
 
 exports.sendPlantInfo = function(plantInfo){
