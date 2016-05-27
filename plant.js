@@ -1,11 +1,10 @@
-var request = require('request-promise');
 var five = require('johnny-five');
 var Raspi = require("raspi-io");
+var request = require('./request.js');
 
 var board = new five.Board({
   io: new Raspi()
 });
-
 
 //TODO: grab moisture data from GPIO sesnor
 
@@ -15,27 +14,6 @@ var board = new five.Board({
 	// update mostRecentReading from sensor on a "data" event
 	// periodically throw the reading from mostRecentReading out to the server via http
 
-
-exports.sendPlantInfo = function(plantInfo){
-//Sent plant info via HTTP POST to central server	
-	var reqObject = {
-		method: 'POST',
-		uri: 'https://safe-headland-15906.herokuapp.com/',
-		body: {},
-		json: true
-	};
-	
-	reqObject.data.plantInfo = plantInfo;
-	
-	request(reqObject)
-	.then(function(resp){
-		console.log('WE GOT DIS (success): ', resp);
-	})
-	.catch(function(err){
-		console.error('WE GOT DAT (error): ', err);
-	})
-};
-
 //test exports.sendPlantInfo
 var dummyData = {
 	'TJ' : 'BOY',
@@ -43,4 +21,4 @@ var dummyData = {
 	'Bob' : 'PLANT'
 };
 
-exports.sendPlantInfo(dummyData);
+request.sendPlantInfo(dummyData);
