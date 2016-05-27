@@ -13,9 +13,9 @@ exports.sendPlantInfo = function(plantInfo){
 	
 	rp(reqObject)
 	.then(function(resp){
-		console.log('WE GOT DIS (success): ', resp);
+		console.log('Plant data sent successfully : ', resp);
 	})
 	.catch(function(err){
-		console.error('WE GOT DAT (error): ', err);
+		console.error('OH BUTTS ITS BROKE! Here is the error: ', err);
 	})
 };
